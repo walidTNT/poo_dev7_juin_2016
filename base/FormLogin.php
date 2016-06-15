@@ -52,9 +52,28 @@ class FormLogin
 
   private function generateField($field) {
 
-    $field_markup = '<' . $field['field']
-     . ' type="' . $field['type']
-     . '" name="' . $field['name'] . '" />';
+    $field_markup = NULL;
+    $tag_open = NULL;
+    $attributes = NULL;
+
+    if ($field['field'] == 'input') {
+
+      $tag_open = '<' . $field['field'] . ' type="' . $field['type'] . '" ';
+      $tag_close = ' />';
+
+    }
+    elseif ($field['field'] == 'textarea') {
+
+      $tag_open = '<' . $field['field'] . '>';
+      $tag_close = '</' . $field['field'] . '>';
+
+    }
+
+    foreach ($field['attributes'] as $attribute => $value) {
+      $attributes .= $attribute . '="' . $value . '" ';
+    }
+
+    $field_markup = $tag_open . ' name="' . $field['name'] . '" ' . $attributes . $tag_close;
 
     return $field_markup;
   }

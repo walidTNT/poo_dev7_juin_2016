@@ -1,7 +1,8 @@
 <?php
 
-  require_once 'base/FormLogin.php';
+  require_once 'base/Form.php';
+  require_once 'base/FormRegister.php';
 
-  $loginForm = new FormLogin();
-  $form = $loginForm->render();
+  $registerForm = new FormRegister();
+  $form = $registerForm->render();
   print $form;

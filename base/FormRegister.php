@@ -65,7 +65,7 @@ class FormRegister extends Form
   public $localisation = [
     'field' => 'input',
     'type' => 'text',
-    'name' => 'city',
+    'name' => 'localisation',
     'attributes' => [
       'placeholder' => 'Votre Ville',
     ],

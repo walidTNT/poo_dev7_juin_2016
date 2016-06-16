@@ -63,13 +63,29 @@ class UserEntity
   public $update;
 
 
+  private function hydrate($data) {
+
+    $user = new UserEntity;
+
+    foreach ($data as $property => $value) {
+      if (property_exists(__CLASS__, $property)) {
+        $user->$property = $value;
+      }
+    }
+
+    return $user;
+  }
+
   /**
    *
    *
    * @return void
    * @access public
    */
-  public function create() {
+  public static function create($data) {
+
+    $user = self::hydrate($data);
+    return $user;
   } // end of member function create
 
   /**

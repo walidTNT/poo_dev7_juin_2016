@@ -8,6 +8,9 @@
 class FormRegister extends Form
 {
 
+
+  private $mon_attribut;
+
   /** Aggregations: */
 
   /** Compositions: */

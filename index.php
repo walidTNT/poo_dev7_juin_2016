@@ -1,8 +1,12 @@
 <?php
 
-  require_once 'base/Form.php';
-  require_once 'base/FormRegister.php';
+  require_once 'base/UserManager.php';
+  require_once 'base/UserEntity.php';
 
-  $registerForm = new FormRegister();
-  $form = $registerForm->render();
-  print $form;
+  // $user = UserEntity::create($_POST);
+  $user = new UserEntity($_POST);
+
+  $user->create = time();
+  $user->update = time();
+
+  $user->save();

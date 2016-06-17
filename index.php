@@ -11,6 +11,4 @@
     'age' => '25',
   ];
 
-  $user = UserEntity::create($_POST);
-
-  $user->save();
+  $user = UserEntity::create($_POST)->save();

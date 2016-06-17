@@ -63,17 +63,15 @@ class UserEntity
   public $update;
 
 
-  private function hydrate($data) {
-
-    $user = new UserEntity;
+  private function hydrate($data, $entity) {
 
     foreach ($data as $property => $value) {
       if (property_exists(__CLASS__, $property)) {
-        $user->$property = $value;
+        $entity->$property = $value;
       }
     }
 
-    return $user;
+    return $entity;
   }
 
   /**
@@ -84,8 +82,7 @@ class UserEntity
    */
   public static function create($data) {
 
-    $user = self::hydrate($data);
-    return $user;
+    return self::hydrate($data, new UserEntity);
   } // end of member function create
 
   /**
@@ -94,7 +91,7 @@ class UserEntity
    * @return void
    * @access public
    */
-  public function delete() {
+  public function delete($data) {
   } // end of member function delete
 
   /**
@@ -108,7 +105,7 @@ class UserEntity
     $db = new PDO('mysql:host=localhost;dbname=aston', 'root', 'paris');
     $manager = new UserManager($db);
     $manager->flush($this);
-
+    return $this;
   } // end of member function save
 
   /**

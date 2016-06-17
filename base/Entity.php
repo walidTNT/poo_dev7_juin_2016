@@ -5,7 +5,7 @@
  * class Entity
  *
  */
-abstract class Entity
+abstract class Entity implements ContentEntityInterface
 {
 
 
